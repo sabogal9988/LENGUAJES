@@ -86,8 +86,6 @@ def lexer(code):
                 tokens.append(f'<id,{identifier},{line_num},{start_column}>')
             continue
 
-        # Error léxico
-        tokens.append(f'>>> Error lexico(linea:{line_num},posicion:{column_num})')
         break
 
     return tokens
