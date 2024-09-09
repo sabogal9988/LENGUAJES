@@ -1,9 +1,21 @@
 # Definición de las palabras reservadas y símbolos
 reserved_words = [
-    'class', 'def', 'if', 'else', 'return', 'True', 'False', 'None', 'while', 'for', 'print',
-    '__init__', 'in', 'not', 'and', 'or', 'is', 'from', 'import', 'as', 'pass', 'break', 'continue',
-    'elif', 'with', 'lambda', 'try', 'except', 'finally', 'raise', 'yield', 'global', 'nonlocal',
-    'assert', 'del'
+    # Palabras reservadas de Python
+    'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield',
+    # Números
+    'Complex', 'Real', 'Rational', 'Integral', 'Number',
+    # Operaciones numéricas
+    'abs', 'divmod', 'pow', 'round', 'sum',
+    # Funciones matemáticas
+    'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'cos', 'cosh', 'degrees', 'e', 'exp', 'fabs', 'floor', 'fmod', 'frexp', 'fsum', 'gcd', 'hypot', 'inf', 'isclose', 'isfinite', 'isinf', 'isnan', 'ldexp', 'log', 'log10', 'log1p', 'log2', 'modf', 'nan', 'pi', 'pow', 'radians', 'remainder', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'tau', 'trunc',
+    # Constantes numéricas
+    'inf', 'nan', 'pi', 'e', 'tau',
+    # Métodos de la clase Number
+    '__abs__', '__add__', '__and__', '__bool__', '__ceil__', '__complex__', '__divmod__', '__eq__', '__float__', '__floor__', '__floordiv__', '__le__', '__lt__', '__mod__', '__mul__', '__neg__', '__pos__', '__pow__', '__radd__', '__rdivmod__', '__rfloordiv__', '__rmod__', '__rmul__', '__rpow__', '__rsub__', '__rtruediv__', '__sub__', '__truediv__', '__trunc__',
+    # Propiedades de solo lectura de la clase Number
+    'denominator', 'imag', 'numerator', 'real',
+    # Booleanos
+    'True', 'False', 'None'
 ]
 
 # Definición de operadores y símbolos, incluyendo operadores de múltiples caracteres
