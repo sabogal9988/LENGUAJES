@@ -1,4 +1,4 @@
-# 1. Definición de las palabras reservadas y símbolos
+
 reserved_words = [
     'class', 'def', 'if', 'else', 'return', 'True', 'False', 'None', 'while', 'for', 'print'
 ]
@@ -15,15 +15,14 @@ operators = {
     '.': 'tk_punto',
 }
 
-# 2. Función para verificar si un caracter es un dígito
 def is_digit(char):
     return '0' <= char <= '9'
 
-# 3. Función para verificar si un caracter es una letra o subrayado
+
 def is_letter(char):
     return 'A' <= char <= 'Z' or 'a' <= char <= 'z' or char == '_'
 
-# 4. Función para analizar el código fuente
+
 def lexer(code):
     tokens = []
     i = 0
@@ -33,27 +32,27 @@ def lexer(code):
     while i < len(code):
         char = code[i]
 
-        # Saltos de línea
+        
         if char == '\n':
             line_num += 1
             column_num = 1
             i += 1
             continue
 
-        # Espacios en blanco
+        
         if char.isspace():
             column_num += 1
             i += 1
             continue
 
-        # Operadores y símbolos
+        
         if char in operators:
             tokens.append(f'<{operators[char]},{line_num},{column_num}>')
             column_num += 1
             i += 1
             continue
 
-        # Números
+        
         if is_digit(char):
             start_column = column_num
             number = char
@@ -68,7 +67,7 @@ def lexer(code):
             tokens.append(f'<tk_entero,{number},{line_num},{start_column}>')
             continue
 
-        # Identificadores y palabras reservadas
+        
         if is_letter(char):
             start_column = column_num
             identifier = char
@@ -90,7 +89,6 @@ def lexer(code):
 
     return tokens
 
-# 5. Lectura del archivo de entrada y ejecución del análisis léxico
 with open('codigo_fuente.py', 'r') as file:
     code = file.read()
 
