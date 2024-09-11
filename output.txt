@@ -26,7 +26,7 @@
 <id,makes_noise,4,10>
 <tk_par_der,4,21>
 <tk_dos_puntos,4,22>
-<print,5,1>
+<id,print,5,1>
 <tk_par_izq,5,6>
 <id,self,5,7>
 <tk_punto,5,11>
@@ -53,7 +53,7 @@
 <tk_par_der,8,17>
 <tk_dos_puntos,8,18>
 <def,9,1>
-<__init__,9,5>
+<id,__init__,9,5>
 <tk_par_izq,9,13>
 <id,self,9,14>
 <tk_dos_puntos,9,18>

@@ -5,7 +5,8 @@ reserved_words = [
     'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 
     'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield',
     # Números
-    'Complex', 'Real', 'Rational', 'Integral', 'Number',
+    'Complex', 'Real', 'Rational', 'Integral', 'Number','int', 'float', 'complex', 'bool', 'list', 'tuple', 'range', 'str', 'bytes', 'bytearray',
+    'memoryview', 'set', 'frozenset', 'dict', 'Union',
     # Operaciones numéricas
     'abs', 'divmod', 'pow', 'round', 'sum',
     # Funciones matemáticas
@@ -25,7 +26,37 @@ reserved_words = [
     # Propiedades de solo lectura de la clase Number
     'denominator', 'imag', 'numerator', 'real',
     # Booleanos
-    'True', 'False', 'None'
+    'True', 'False', 'None',
+    #Manejo de errores
+    'try', 'except', 'finally', 'raise', 'assert', 'with',
+
+    #Identificadores
+    'string', 're', 'codecs', 'unicodedata', 'difflib', 'struct',
+
+    #Tipos de datos adiccionales
+    'datetime', 'collections', 'math', 'heapq', 'decimal', 'fractions', 'random',
+
+    #Sistema de operativos y concurrencias 
+
+    'os', 'shutil', 'tempfile', 'threading', 'multiprocessing', 'asyncio',
+
+    #Manejo de expeciones incorparados
+
+    'Exception', 'ValueError', 'TypeError', 'KeyError', 'IndexError', 'AttributeError',
+    'ZeroDivisionError', 'FileNotFoundError',
+
+    #Tipos y servicios 
+
+    'enum', 'weakref', 'typing',
+
+    #Redes de comunicacion 
+
+    'socket', 'ssl', 'http', 'xmlrpc', 'ftplib', 'imaplib', 'smtplib', 'uuid',
+
+    #Servicios criptograficos 
+
+    'hashlib', 'hmac', 'pickle', 'marshal', 'sqlite3',
+
 ]
 
 # Definición de operadores y símbolos, incluyendo operadores de múltiples caracteres
