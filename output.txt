@@ -6,7 +6,7 @@
 <tk_dos_puntos,1,21>
 <id,makes_noise,2,1>
 <tk_dos_puntos,2,12>
-<id,bool,2,13>
+<bool,2,13>
 <tk_asig,2,18>
 <False,2,20>
 <def,3,1>
@@ -42,7 +42,7 @@
 <tk_cadena,"Animal",6,17>
 <tk_par_der,6,25>
 <tk_ejecuta,6,27>
-<id,str,6,30>
+<str,6,30>
 <tk_dos_puntos,6,33>
 <return,7,1>
 <tk_cadena,"???",7,8>
@@ -73,7 +73,7 @@
 <tk_cadena,"Cow",11,17>
 <tk_par_der,11,22>
 <tk_ejecuta,11,24>
-<id,str,11,27>
+<str,11,27>
 <tk_dos_puntos,11,30>
 <return,12,1>
 <tk_cadena,"moo",12,8>

@@ -93,7 +93,7 @@ operators_keys = sorted(operators.keys(), key=lambda x: -len(x))
 def is_digit(char):
     return '0' <= char <= '9'
 
-# Función para verificar si un carácter es una letra o subrayado
+# Función para verificar si un carácter es una letra o raya al piso
 def is_letter(char):
     return ('A' <= char <= 'Z') or ('a' <= char <= 'z') or char == '_'
 
