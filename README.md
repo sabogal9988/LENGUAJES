@@ -28,3 +28,75 @@ El analizador léxico es capaz de reconocer palabras reservadas de Python, opera
    ```bash
    git clone https://github.com/tu-usuario/python-lexical-analyzer.git
    cd python-lexical-analyzer
+2. **Crear el entorno virtual (opcional pero recomendado):**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # En Linux/Mac
+   venv\Scripts\activate  # En Windows
+
+## Ejecucion
+Para ejecutar el analizador léxico sobre un archivo de código Python, sigue estos pasos:
+
+1.  Crea o coloca el archivo Python que deseas analizar en el directorio raíz del proyecto. Por ejemplo, crea un archivo llamado codigo_fuente.py con el siguiente contenido:
+
+   ```bash
+   class Animal:
+      def sound(self):
+         return "moo"
+
+   c = Animal()
+   print(c.sound())
+   ```
+
+2. Ejecuta el analizador léxico:
+
+
+   ```bash
+   python main.py
+   ```
+   Esto analizará el archivo codigo_fuente.py y generará un archivo de salida output.txt con los tokens generados.
+
+3. Revisar el resultado: Abre el archivo output.txt para ver los tokens generados por el analizador léxico.
+
+Ejemplo de salida en output.txt:
+
+```bash 
+<class,1,1>
+<id,Animal,1,7>
+<tk_dos_puntos,1,13>
+<def,2,5>
+<id,sound,2,9>
+<tk_par_izq,2,14>
+<id,self,2,15>
+<tk_par_der,2,19>
+<tk_dos_puntos,2,20>
+<return,3,9>
+<tk_cadena,"moo",3,16>
+<id,c,5,1>
+<tk_asig,5,3>
+<id,Animal,5,5>
+<tk_par_izq,5,11>
+<tk_par_der,5,12>
+<print,6,1>
+<tk_par_izq,6,6>
+<id,c,6,7>
+<tk_punto,6,8>
+<id,sound,6,9>
+<tk_par_izq,6,14>
+<tk_par_der,6,15>
+<tk_par_der,6,16>
+```
+## Errores lexicos 
+
+Si el analizador léxico detecta un error léxico, se reportará en el archivo output.txt y el análisis se detendrá. El formato del error es el siguiente:
+
+```bash
+>>> Error lexico(linea:X,posicion:Y)
+```
+Donde X es el número de línea y Y es la posición del error.
+
+## Integrantes
+
+- **Daniel Santiago Varela Guerrero**
+- **Miguel Angel Velasco**
+- **Sebastian Sabogal Castillo**
