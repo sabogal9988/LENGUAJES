@@ -84,7 +84,8 @@ operators = {
     ',': 'tk_coma',
     '.': 'tk_punto',
     ';': 'tk_punto_y_coma',
-    '__': 'tk_dos_lineas'
+    '__': 'tk_doble_raya',
+    '@': 'tk_overide'
 }
 
 # Ordenamos los operadores por longitud decreciente para maximal munch
