@@ -271,8 +271,8 @@ def parse_token(token):
     token_parts = token.strip('<>').split(',')
     token_type = token_parts[0]
     lexema = token_parts[1] if len(token_parts) > 1 else None
-    line = int(token_parts[2])
-    col = int(token_parts[3])
+    line = int(token_parts[2]) if len(token_parts) > 2 else None
+    col = int(token_parts[3]) if len(token_parts) > 3 else None
     return token_type, lexema, line, col
 
 # Verifica si los tokens de apertura y cierre coinciden
