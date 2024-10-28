@@ -230,54 +230,6 @@ def lexer(code):
 
     return tokens
 
-class SyntaxError(Exception):
-    def __init__(self, lineno, col, found, expected):
-        self.lineno = lineno
-        self.col = col
-        self.found = found
-        self.expected = expected
-        super().__init__(f'<{lineno},{col}> Error sintáctico: se encontró: "{found}"; se esperaba: {", ".join(f\'"{e}"\' for e in expected)}')
-
-class Parser:
-    def __init__(self, tokens):
-        self.tokens = tokens
-        self.i = 0
-        self.length = len(tokens)
-
-    def next_token(self):
-        if self.i < self.length:
-            token = self.tokens[self.i]
-            self.i += 1
-            return token
-        return None
-
-    def expect(self, expected):
-        token = self.next_token()
-        token_type = token.split(',')[0][1:]
-        if token_type not in expected:
-            raise SyntaxError(token.split(',')[-2], token.split(',')[-1][:-1], token_type, expected)
-
-    def parse(self):
-        try:
-            while self.i < self.length:
-                token = self.next_token()
-                token_type = token.split(',')[0][1:]
-                if token_type == 'def':
-                    self.expect(['id'])
-                    self.expect(['tk_par_izq'])
-                    self.expect(['id', 'tk_par_der'])
-                    self.expect(['tk_dos_puntos'])
-                    self.expect(['pass', 'return'])
-                elif token_type == 'class':
-                    self.expect(['id'])
-                    self.expect(['tk_dos_puntos'])
-                    self.expect(['pass'])
-                else:
-                    raise SyntaxError(token.split(',')[-2], token.split(',')[-1][:-1], token_type, ['def', 'class'])
-            print("El análisis sintáctico ha finalizado exitosamente.")
-        except SyntaxError as e:
-            print(e)
-
 # Función principal para leer el archivo de entrada y escribir la salida
 def main():
     input_filename = 'codigo_fuente.py'  # Nombre del archivo de entrada
@@ -294,9 +246,6 @@ def main():
             output_file.write(token + '\n')
     print(f'Análisis léxico completado. Revisa el archivo {output_filename} para ver los resultados.')
 
-    # Realizar análisis sintáctico
-    parser = Parser(tokens)
-    parser.parse()
-
 if __name__ == '__main__':
     main()
+    

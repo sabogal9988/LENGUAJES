@@ -1,1 +1,0 @@
-<1,None> Error sintáctico: se encontró: "1"; se esperaba: ":".\n
