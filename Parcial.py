@@ -1,8 +1,8 @@
 # Definición de las palabras reservadas y símbolos
 reserved_words = [
     # Palabras reservadas de Python
-    'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif',
-    'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda',
+    'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 
+    'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 
     'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield',
     # Números
     'Complex', 'Real', 'Rational', 'Integral', 'Number','int', 'float', 'complex', 'bool', 'list', 'tuple', 'range', 'str', 'bytes', 'bytearray',
@@ -11,17 +11,17 @@ reserved_words = [
     'abs', 'divmod', 'pow', 'round', 'sum',
     # Funciones matemáticas
     'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'cos',
-      'cosh', 'degrees', 'e', 'exp', 'fabs', 'floor', 'fmod', 'frexp', 'fsum',
-      'gcd', 'hypot', 'inf', 'isclose', 'isfinite', 'isinf', 'isnan', 'ldexp',
-      'log', 'log10', 'log1p', 'log2', 'modf', 'nan', 'pi', 'pow', 'radians',
+      'cosh', 'degrees', 'e', 'exp', 'fabs', 'floor', 'fmod', 'frexp', 'fsum', 
+      'gcd', 'hypot', 'inf', 'isclose', 'isfinite', 'isinf', 'isnan', 'ldexp', 
+      'log', 'log10', 'log1p', 'log2', 'modf', 'nan', 'pi', 'pow', 'radians', 
       'remainder', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'tau', 'trunc',
     # Constantes numéricas
     'inf', 'nan', 'pi', 'e', 'tau',
     # Métodos de la clase Number
-    '__abs__', '__add__', '__and__', '__bool__', '__ceil__', '__complex__',
-    '__divmod__', '__eq__', '__float__', '__floor__', '__floordiv__',
-    '__le__', '__lt__', '__mod__', '__mul__', '__neg__', '__pos__', '__pow__',
-    '__radd__', '__rdivmod__', '__rfloordiv__', '__rmod__', '__rmul__', '__rpow__',
+    '__abs__', '__add__', '__and__', '__bool__', '__ceil__', '__complex__', 
+    '__divmod__', '__eq__', '__float__', '__floor__', '__floordiv__', 
+    '__le__', '__lt__', '__mod__', '__mul__', '__neg__', '__pos__', '__pow__', 
+    '__radd__', '__rdivmod__', '__rfloordiv__', '__rmod__', '__rmul__', '__rpow__', 
     '__rsub__', '__rtruediv__', '__sub__', '__truediv__', '__trunc__',
     # Propiedades de solo lectura de la clase Number
     'denominator', 'imag', 'numerator', 'real',
@@ -36,7 +36,7 @@ reserved_words = [
     #Tipos de datos adiccionales
     'datetime', 'collections', 'math', 'heapq', 'decimal', 'fractions', 'random',
 
-    #Sistema de operativos y concurrencias
+    #Sistema de operativos y concurrencias 
 
     'os', 'shutil', 'tempfile', 'threading', 'multiprocessing', 'asyncio',
 
@@ -45,15 +45,15 @@ reserved_words = [
     'Exception', 'ValueError', 'TypeError', 'KeyError', 'IndexError', 'AttributeError',
     'ZeroDivisionError', 'FileNotFoundError',
 
-    #Tipos y servicios
+    #Tipos y servicios 
 
     'enum', 'weakref', 'typing',
 
-    #Redes de comunicacion
+    #Redes de comunicacion 
 
     'socket', 'ssl', 'http', 'xmlrpc', 'ftplib', 'imaplib', 'smtplib', 'uuid',
 
-    #Servicios criptograficos
+    #Servicios criptograficos 
 
     'hashlib', 'hmac', 'pickle', 'marshal', 'sqlite3',
 
@@ -84,7 +84,8 @@ operators = {
     ',': 'tk_coma',
     '.': 'tk_punto',
     ';': 'tk_punto_y_coma',
-    '__': 'tk_dos_lineas'
+    '__': 'tk_doble_raya',
+    '@': 'tk_overide'
 }
 
 # Ordenamos los operadores por longitud decreciente para maximal munch
@@ -98,7 +99,6 @@ def is_digit(char):
 def is_letter(char):
     return ('A' <= char <= 'Z') or ('a' <= char <= 'z') or char == '_'
 
-
 # Función principal del analizador léxico
 def lexer(code):
     tokens = []
@@ -106,30 +106,30 @@ def lexer(code):
     line_num = 1
     column_num = 1
     length = len(code)
-
+    
     while i < length:
         char = code[i]
-
+        
         # Saltos de línea
         if char == '\n':
             line_num += 1
             column_num = 1
             i += 1
             continue
-
+        
         # Espacios en blanco y tabulaciones
         if char == ' ' or char == '\t' or char == '\r':
             column_num += 1
             i += 1
             continue
-
+        
         # Ignorar comentarios
         if char == '#':
             while i < length and code[i] != '\n':
                 i += 1
                 column_num += 1
             continue
-
+        
         # Manejo de cadenas de texto
         if char == '"' or char == "'":
             start_line = line_num
@@ -170,7 +170,7 @@ def lexer(code):
                 tokens.append(f'>>> Error lexico(linea:{start_line},posicion:{start_column})')
                 return tokens
             continue
-
+        
         # Operadores y símbolos
         matched = False
         for op in operators_keys:
@@ -183,7 +183,7 @@ def lexer(code):
                 break
         if matched:
             continue
-
+        
         # Números (enteros y flotantes)
         if is_digit(char):
             start_column = column_num
@@ -209,7 +209,7 @@ def lexer(code):
             else:
                 tokens.append(f'<tk_entero,{number},{line_num},{start_column}>')
             continue
-
+        
         # Identificadores y palabras reservadas
         if is_letter(char):
             start_column = column_num
@@ -223,68 +223,62 @@ def lexer(code):
             else:
                 tokens.append(f'<id,{identifier},{line_num},{start_column}>')
             continue
-
+        
         # Error léxico genérico
         tokens.append(f'>>> Error lexico(linea:{line_num},posicion:{column_num})')
         return tokens
 
     return tokens
 
+class SyntaxError(Exception):
+    def __init__(self, lineno, col, found, expected):
+        self.lineno = lineno
+        self.col = col
+        self.found = found
+        self.expected = expected
+        super().__init__(f'<{lineno},{col}> Error sintáctico: se encontró: "{found}"; se esperaba: {", ".join(f\'"{e}"\' for e in expected)}')
 
-# Función principal del analizador sintáctico
-def parser(tokens):
-    stack = []  # Pila para manejo de paréntesis, llaves, corchetes
-    indent_level = 0  # Nivel de indentación
-    i = 0
-    while i < len(tokens):
-        token = tokens[i]
-        token_type, lexema, line, col = parse_token(token)
+class Parser:
+    def __init__(self, tokens):
+        self.tokens = tokens
+        self.i = 0
+        self.length = len(tokens)
 
-        # Verificar indentación en bloques (if, for, def)
-        if token_type == 'def' or token_type == 'if' or token_type == 'for' or token_type == 'while':
-            if i + 1 < len(tokens):
-                next_token_type, _, next_line, _ = parse_token(tokens[i+1])
-                if next_token_type != 'tk_dos_puntos':
-                    return f"<{line},{col}> Error sintáctico: se encontró: \"{lexema}\"; se esperaba: \":\"."
+    def next_token(self):
+        if self.i < self.length:
+            token = self.tokens[self.i]
+            self.i += 1
+            return token
+        return None
 
-        # Verificar balanceo de paréntesis, corchetes, y llaves
-        if token_type in ['tk_par_izq', 'tk_corchete_izq', 'tk_llave_izq']:
-            stack.append((token_type, line, col))
-        elif token_type in ['tk_par_der', 'tk_corchete_der', 'tk_llave_der']:
-            if not stack:
-                return f"<{line},{col}> Error sintáctico: se encontró: \"{lexema}\"; se esperaba: un token de apertura correspondiente."
-            opening_token, opening_line, opening_col = stack.pop()
-            if not tokens_match(opening_token, token_type):
-                return f"<{line},{col}> Error sintáctico: se encontró: \"{lexema}\"; se esperaba un token de cierre para \"{opening_token}\"."
+    def expect(self, expected):
+        token = self.next_token()
+        token_type = token.split(',')[0][1:]
+        if token_type not in expected:
+            raise SyntaxError(token.split(',')[-2], token.split(',')[-1][:-1], token_type, expected)
 
-        i += 1
+    def parse(self):
+        try:
+            while self.i < self.length:
+                token = self.next_token()
+                token_type = token.split(',')[0][1:]
+                if token_type == 'def':
+                    self.expect(['id'])
+                    self.expect(['tk_par_izq'])
+                    self.expect(['id', 'tk_par_der'])
+                    self.expect(['tk_dos_puntos'])
+                    self.expect(['pass', 'return'])
+                elif token_type == 'class':
+                    self.expect(['id'])
+                    self.expect(['tk_dos_puntos'])
+                    self.expect(['pass'])
+                else:
+                    raise SyntaxError(token.split(',')[-2], token.split(',')[-1][:-1], token_type, ['def', 'class'])
+            print("El análisis sintáctico ha finalizado exitosamente.")
+        except SyntaxError as e:
+            print(e)
 
-    # Verificar si la pila está vacía (paréntesis o corchetes no cerrados)
-    if stack:
-        opening_token, opening_line, opening_col = stack.pop()
-        return f"<{opening_line},{opening_col}> Error sintáctico: se encontró: \"{opening_token}\" sin cerrar."
-
-    return "El análisis sintáctico ha finalizado exitosamente."
-
-# Función para dividir el token en sus partes
-def parse_token(token):
-    token_parts = token.strip('<>').split(',')
-    token_type = token_parts[0]
-    lexema = token_parts[1] if len(token_parts) > 1 else None
-    line = int(token_parts[2]) if len(token_parts) > 2 else None
-    col = int(token_parts[3]) if len(token_parts) > 3 else None
-    return token_type, lexema, line, col
-
-# Verifica si los tokens de apertura y cierre coinciden
-def tokens_match(opening_token, closing_token):
-    pairs = {
-        'tk_par_izq': 'tk_par_der',
-        'tk_corchete_izq': 'tk_corchete_der',
-        'tk_llave_izq': 'tk_llave_der'
-    }
-    return pairs.get(opening_token) == closing_token
-
-# Modificación del main para incluir el análisis sintáctico
+# Función principal para leer el archivo de entrada y escribir la salida
 def main():
     input_filename = 'codigo_fuente.py'  # Nombre del archivo de entrada
     output_filename = 'output.txt'       # Nombre del archivo de salida
@@ -295,16 +289,14 @@ def main():
         print(f'Error: El archivo {input_filename} no existe.')
         return
     tokens = lexer(code)
-    if not tokens:
-        print("No se generaron tokens.")
-        return
-
-    # Se realiza el análisis sintáctico
-    result = parser(tokens)
     with open(output_filename, 'w', encoding='utf-8') as output_file:
-        output_file.write(result + '\\n')
+        for token in tokens:
+            output_file.write(token + '\n')
+    print(f'Análisis léxico completado. Revisa el archivo {output_filename} para ver los resultados.')
 
-    print(f'Análisis sintáctico completado. Revisa el archivo {output_filename} para ver los resultados.')
+    # Realizar análisis sintáctico
+    parser = Parser(tokens)
+    parser.parse()
 
 if __name__ == '__main__':
     main()
